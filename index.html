@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Ultra Deluxe v5 – Cyberpunk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <header class="top">
+    <h1>2048 Ultra Deluxe v5 <span class="spark">⚡</span></h1>
+    <div class="likes">
+      <button id="likeBtn" title="Like le jeu">❤️ Like</button>
+      <span id="likeCount">0</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- MENU -->
+    <section id="menu" class="card">
+      <h2>Choisis un mode</h2>
+      <div class="btn-row">
+        <button class="primary" data-mode="classic">🎮 Classique (4×4)</button>
+        <button class="primary" data-mode="infinite">♾️ Infini (4×4)</button>
+        <button class="primary" data-mode="hardcore">🔥 Hardcore (5×5)</button>
+      </div>
+      <div class="btn-row">
+        <button id="openLb" class="ghost">🏆 Voir le classement</button>
+      </div>
+      <p class="hint">PC : flèches ⬆️⬇️⬅️➡️ • Mobile : swipe sur la grille</p>
+    </section>
+
+    <!-- JEU -->
+    <section id="game" class="card hidden">
+      <div class="hud">
+        <span id="modeLabel">Mode : —</span>
+        <span>Score : <strong id="score">0</strong></span>
+        <span>Best : <strong id="best">0</strong></span>
+        <span>Mouvements : <strong id="moves">0</strong></span>
+      </div>
+
+      <div id="grid" class="grid" role="grid" aria-label="grille 2048"></div>
+
+      <div class="actions">
+        <button id="backBtn" class="ghost">🏠 Menu</button>
+        <button id="shareBtn" class="share hidden">📤 Partager mon score</button>
+      </div>
+      <p id="msg" class="msg"></p>
+    </section>
+  </main>
+
+  <!-- MODAL LEADERBOARD -->
+  <div id="lbOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal">
+      <header class="modal-head">
+        <h3>🏆 Classement (local)</h3>
+        <button id="closeLb" class="icon">✖</button>
+      </header>
+      <div class="modal-body">
+        <label for="lbMode">Mode :</label>
+        <select id="lbMode">
+          <option value="classic">Classique</option>
+          <option value="infinite">Infini</option>
+          <option value="hardcore">Hardcore</option>
+        </select>
+        <table id="lbTable" class="table">
+          <thead><tr><th>#</th><th>Score</th><th>Mouvements</th><th>Date</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="subhint">Astuce : le classement est stocké dans ton navigateur (localStorage).</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
